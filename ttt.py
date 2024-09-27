@@ -284,15 +284,15 @@ class App(QWidget):
         self.initUI()
         self.name1 = ""
         self.name2 =""
-        self.file_type = "生成科航类型的对账单"
+        self.file_type = "生成自己简洁的对账单"
 
         self.setAcceptDrops(True)  # 设置窗口接受拖拽事件
 
     def initUI(self):
         # 创建单选框
         self.radio1 = QRadioButton('生成科航类型的对账单')
-        self.radio1.setChecked(True)
         self.radio2 = QRadioButton('生成自己简洁的对账单')
+        self.radio2.setChecked(True)
 
         # 信号和槽函数连接
         self.radio1.toggled.connect(self.onRadioToggled)
@@ -382,4 +382,4 @@ if __name__ == '__main__':
     sys.exit(app.exec_())
 
 
-
+### sudo pyinstaller --noconsole --onefile
