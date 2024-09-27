@@ -185,7 +185,7 @@ def get_songhuo_sheet(path):
     ws_d.merge_cells(start_row=4, start_column=1, end_row=4, end_column=3)
     ws_d.merge_cells(start_row=4, start_column=6, end_row=4, end_column=8)
     ws_d['F4'] = '日期：2024-11-14'
-    headers = ["序号", "交货日期", "送货单号",  "模号", "规格及型号",  "数量", "单价(RMB)", "金额(RMB)"]
+    headers = ["序号", "交货日期", "送货单号",  "模号", "规格及型号",  "数量", "单价(RMB)", "金额(RMB)", "采购人"]
     ws_d.append(headers)
 
     # 打开一个Excel文件
@@ -242,8 +242,9 @@ def get_songhuo_sheet(path):
             # tmp_del = DeliveryItem(number+1,tmp_sheet.m_no,tmp_sheet.m_date,tmp_sheet.m_ddnumber,"木箱",
             #                        row_data[1], row_data[2], row_data[3], row_data[4], row_data[5], row_data[6]
             #                        )
+
             ws_d.append([number+1,tmp_sheet.m_date,tmp_sheet.m_no,
-                                   row_data[1], row_data[2],  row_data[4], row_data[5], row_data[6]])
+                                   row_data[1], row_data[2],  row_data[4], row_data[5], row_data[6], str(sheet.cell(row=3,column=1).value)])
             number = number + 1
         wb_d.save('自己简洁的对账单.xlsx')
 
