@@ -1,5 +1,6 @@
 import openpyxl
 import sys
+import os
 from openpyxl import Workbook
 from openpyxl.styles import Font
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QTableWidget, QTableWidgetItem, QVBoxLayout, QTextEdit,QMessageBox,QRadioButton
@@ -94,6 +95,8 @@ G_SongHuo_sheets = []
 G_DuiZhang_sheets = []
 
 def get_songhuo_sheet_old(path):
+    filename = os.path.basename(path)
+    filename = os.path.splitext(filename)[0]  # 去掉扩展名
     type = 0
 
     # 创建工作簿和活动工作表
@@ -159,7 +162,7 @@ def get_songhuo_sheet_old(path):
             ws_d.append([number+1,tmp_sheet.m_ddnumber,tmp_sheet.m_date,tmp_sheet.m_no,"木箱",
                                    row_data[1], row_data[2], row_data[3], row_data[4], row_data[5], row_data[6]])
             number = number + 1
-        wb_d.save('科航类型的对账单.xlsx')
+        wb_d.save(f'对账单_{filename}.xlsx')
 
         G_SongHuo_sheets.append(tmp_sheet)
 
@@ -167,6 +170,8 @@ def get_songhuo_sheet_old(path):
     wb.close()
 
 def get_songhuo_sheet(path):
+    filename = os.path.basename(path)
+    filename = os.path.splitext(filename)[0]  # 去掉扩展名
     type = 0
 
     # 创建工作簿和活动工作表
@@ -246,7 +251,7 @@ def get_songhuo_sheet(path):
             ws_d.append([number+1,tmp_sheet.m_date,tmp_sheet.m_no,
                                    row_data[1], row_data[2],  row_data[4], row_data[5], row_data[6], str(sheet.cell(row=3,column=1).value)])
             number = number + 1
-        wb_d.save('自己简洁的对账单.xlsx')
+        wb_d.save(f'对账单_{filename}.xlsx')
 
         G_SongHuo_sheets.append(tmp_sheet)
 
